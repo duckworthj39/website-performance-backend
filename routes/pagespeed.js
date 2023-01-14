@@ -3,7 +3,6 @@ const router = express.Router();
 const request = require('request');
 
 router.get('/', (req, res) => {
-  console.log("test")
   const competitors = ['https://www.amazon.com', 'https://www.walmart.com', 'https://www.bestbuy.com', 'https://www.target.com'];
   const promises = competitors.map(url => fetchPageSpeedData(url));
 
