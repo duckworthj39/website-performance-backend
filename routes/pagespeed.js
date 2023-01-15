@@ -28,14 +28,10 @@ const fetchPageSpeedData = (url) => {
 
 const formatData = (data, url) => {
   const speedScore = data.lighthouseResult.categories.performance.score;
-  const firstContentfulPaint = data.lighthouseResult.audits['first-contentful-paint'].displayValue;
-  const timeToInteractive = data.lighthouseResult.audits['interactive'].displayValue;
 
   return {
     site: url,
-    speedScore: speedScore,
-    firstContentfulPaint: firstContentfulPaint,
-    timeToInteractive: timeToInteractive,
+    speedScore: speedScore
   };
 }
 
