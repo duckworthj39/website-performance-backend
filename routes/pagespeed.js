@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// This function fetches the page performance from the lighthouse API
 const fetchPageSpeedData = (url) => {
   const pagespeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}`;
   return new Promise((resolve, reject) => {
@@ -26,6 +27,7 @@ const fetchPageSpeedData = (url) => {
   });
 }
 
+// This function formats the data to be returned
 const formatData = (data, url) => {
   const speedScore = data.lighthouseResult.categories.performance.score;
   // Divide the numeric scores by 1000 to get seconds rather than milliseconds
