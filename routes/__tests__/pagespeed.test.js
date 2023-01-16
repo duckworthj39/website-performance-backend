@@ -18,12 +18,18 @@ const mockData =
             }
           }
         }
+      },
+      audits: {
+        'first-contentful-paint': {
+          numericValue: 1000
+        },
+        'interactive': {
+          numericValue: 2000
+        }
       }
+
     }
   };
-
-let requestMock = jest.fn();
-
 
 jest.mock('request', () => jest.fn((options, cb) => {
   cb(null, {}, JSON.stringify(mockData));
@@ -42,6 +48,8 @@ describe('GET /', () => {
     expect(response.body.length).toBe(4);  // 4 competitors
     expect(response.body[0]).toHaveProperty('site', 'https://www.amazon.com');
     expect(response.body[0]).toHaveProperty('speedScore');
+    expect(response.body[0]).toHaveProperty('firstContentfulPaint');
+    expect(response.body[0]).toHaveProperty('timeToInteractive');
   });
 
   it('should handle errors and return 500 status', async () => {
